@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="kind">
+
+       <!-- <item>식사 시간대를 선택 해 주세요</item>-->
+        <item>아침</item>
+        <item>점심</item>
+        <item>저녁</item>
+    </string-array>
+</resources>

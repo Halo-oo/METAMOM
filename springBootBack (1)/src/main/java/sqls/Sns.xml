@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace ="mul.camp.a.dao.SnsDao">
+  
+  <insert id="snsInsert" parameterType="mul.camp.a.dto.SnsDto">
+  INSERT INTO META_SNS(SNSSEQ,ID,NICKNAME,PROFILE,
+  SNSDATE,IMAGECONTENT,LIKECOUNT,COMMENTCOUNT,CONTENT)
+  VALUES(SEQSNS.NEXTVAL,#{id},#{nickname},#{profile},
+  SYSDATE,#{imagecontent}
+  ,0,0,#{content})
+  </insert>
+  
+  <delete id="snsDelete" parameterType="Integer">
+  DELETE
+  FROM META_SNS
+  WHERE SNSSEQ=#{seq}
+  </delete>
+  
+  <update id="snsUpdate" parameterType="mul.camp.a.dto.SnsDto">
+  UPDATE META_SNS
+  SET
+  IMAGECONTENT=#{imagecontent},
+  CONTENT=#{content}
+  WHERE SNSSEQ=#{seq}
+  
+  </update>
+  
+    <update id="snsWebUpdate" parameterType="mul.camp.a.dto.SnsDto">
+  UPDATE META_SNS
+  SET
+  CONTENT=#{content}
+  WHERE SNSSEQ=#{seq}
+  
+  </update>
+  
+  <select id="snsSearch" parameterType = "Integer" resultType = "mul.camp.a.dto.SnsDto">
+  SELECT *
+  FROM META_SNS
+  WHERE SNSSEQ = #{seq}
+  </select>
+  
+   <update id="snsImgUpdate" parameterType="mul.camp.a.dto.SnsDto">
+  UPDATE META_SNS
+  SET
+  PROFILE=#{profile},
+  NICKNAME=#{nickname}
+  WHERE ID=#{id}
+  </update>
+  
+  <select id="snsGetMmeber" 
+  parameterType="String" resultType="mul.camp.a.dto.MemberDto">  
+  SELECT *
+  FROM META_MEMBER
+  WHERE id=#{id}
+  </select>
+  
+  <select id="allSns" resultType="mul.camp.a.dto.SnsDto">
+SELECT a.SNSSEQ,a.ID,a.NICKNAME,a.PROFILE,
+   	TO_DATE(TO_CHAR(SYSDATE,'YYYYMMDD')) - TO_DATE(SNSDATE) || '-' || 
+       TRUNC(((SYSDATE - SNSDATE) - TRUNC(SYSDATE - SNSDATE)) * 24) || '-'  ||
+       TRUNC(MOD((SYSDATE - SNSDATE)*24,1)*60) AS SNSDATE,
+   a.IMAGECONTENT, a.LIKECOUNT,a.COMMENTCOUNT,a.CONTENT
+  FROM META_SNS a, META_MEMBER b
+  WHERE a.ID = b.ID(+) AND b.DEL = 'N'
+  ORDER BY a.SNSSEQ DESC
+  </select>
+  
+  <select id="allComment" parameterType = "Integer"
+   resultType="mul.camp.a.dto.SnsCommentDto">
+  SELECT CMTSEQ,SEQ,ID,NICKNAME,PROFILE,
+  	   TO_DATE(TO_CHAR(SYSDATE,'YYYYMMDD')) - TO_DATE(WDATE) || '-' || 
+       TRUNC(((SYSDATE - WDATE) - TRUNC(SYSDATE - WDATE)) * 24) || '-'  ||
+       TRUNC(MOD((SYSDATE - WDATE)*24,1)*60) AS WDATE,
+       CONTENT
+  FROM SNS_COMMENT
+  WHERE SEQ=#{seq}
+  ORDER BY CMTSEQ
+  </select>
+  
+  <insert id="snsLikeInsert" parameterType="mul.camp.a.dto.SnsLikeDto">
+  INSERT INTO SNS_LIKE(LIKESEQ,ID,LIKEDATE)
+  VALUES(#{likeseq},#{id},SYSDATE)
+  </insert>
+  
+  <insert id="snsCommentInsert" parameterType = "mul.camp.a.dto.SnsCommentDto">
+  INSERT INTO SNS_COMMENT(CMTSEQ,SEQ,ID,NICKNAME,PROFILE,WDATE,CONTENT)
+  VALUES(#{cmtseq},#{seq},#{id},#{nickname},#{profile},SYSDATE,#{content})
+  </insert>
+  
+  <select id="snsLikeCount" parameterType="Integer" resultType="Integer">
+  SELECT COUNT(*)
+  FROM SNS_LIKE
+  WHERE LIKESEQ = #{likeseq}
+  </select>
+  
+  <select id="snsCommentCount" parameterType="Integer" resultType="Integer">
+  SELECT COUNT(*)
+  FROM SNS_COMMENT
+  WHERE SEQ=#{seq}
+  </select>
+  
+   <update id="snsCommentUpdate" parameterType="mul.camp.a.dto.SnsCommentDto">
+  UPDATE SNS_COMMENT
+  SET
+  PROFILE=#{profile},
+  NICKNAME=#{nickname}
+  WHERE ID=#{id}
+  </update>
+  
+  <delete id="snsLikeDelete" parameterType="mul.camp.a.dto.SnsLikeDto">
+  DELETE FROM SNS_LIKE
+  WHERE LIKESEQ=#{likeseq} AND ID=#{id}
+  </delete>
+  
+  <delete id="snsLikeAllDelete" parameterType="Integer">
+  DELETE FROM SNS_LIKE
+  WHERE LIKESEQ=#{seq}
+  </delete>
+  
+  <delete id="snsCommentAllDelete" parameterType="Integer">
+  DELETE FROM SNS_COMMENT
+  WHERE SEQ=#{seq}
+  </delete>
+  
+  <delete id="snsCommentDelete" parameterType="Integer">
+  DELETE FROM SNS_COMMENT
+  WHERE CMTSEQ = #{cmtseq}
+  
+  </delete>
+  
+  <select id="snsLikeCheck" parameterType="mul.camp.a.dto.SnsLikeDto"
+   resultType="Integer">
+  SELECT COUNT(*)
+  FROM SNS_LIKE
+  WHERE LIKESEQ=#{likeseq} AND ID=#{id}
+  </select>
+  
+  <select id="nextSeq" resultType="Integer">
+  SELECT SEQCMT.NEXTVAL FROM DUAL
+  </select>
+  
+    <select id="currSeq" resultType="Integer">
+  SELECT SEQCMT.CURRVAL FROM DUAL
+  </select>
+  
+  <!-- #21# (Web_관리자용) 검색 + 페이징 + 회원목록 -->
+<!-- (SELECT ROW_NUMBER()OVER(ORDER BY REF DESC, STEP ASC) AS RNUM, ID, NAME, EMAIL, GENDER, PHONE, NICKNAME, HEIGHT, WEIGHT, DEL, BIRTH, AUTH, SUBSCRIBE -->
+<select id="getSnsListSearchPage" parameterType="mul.camp.a.dto.MemberParam" resultType="mul.camp.a.dto.SnsDto">
+	SELECT SNSSEQ,ID,NICKNAME,PROFILE, SNSDATE,
+   IMAGECONTENT, LIKECOUNT,COMMENTCOUNT,CONTENT
+	FROM
+		<!-- 검색조건이 있다면 검색조건에 맞는 게시글 찾기 & WHERE절에 1=1 항상 참 조건을 걸어둔 이유는 조건에 맞지 않아 error가 발생하는 경우를 방지하기 위함 -->
+		(SELECT ROW_NUMBER()OVER(ORDER BY SNSSEQ DESC) AS RNUM,SNSSEQ, ID, NICKNAME,PROFILE,SNSDATE,IMAGECONTENT, LIKECOUNT, COMMENTCOUNT, CONTENT
+		FROM META_SNS
+		WHERE 1=1
+			<if test="choice != null and choice != '' and search != null and search != '' ">
+				<if test="choice == 'userNickName'">
+					AND NICKNAME LIKE '%'||#{search}||'%'
+				</if>
+				<if test="choice == 'userContent'">
+					AND CONTENT LIKE '%'||#{search}||'%'
+				</if>
+			</if>)
+	<!-- start ~ end 사이의 RUNM번의 게시글 정보 반환 -->
+	WHERE RNUM BETWEEN ${start} AND ${end}
+</select>
+
+<!-- #21# (Web _관리자용) 회원목록 총 개수 -->
+<select id="getSnsCount" parameterType="mul.camp.a.dto.MemberParam" resultType="Integer">
+	 SELECT NVL(COUNT(*), 0) AS CNT
+	 FROM META_SNS
+	 WHERE 1=1
+		 <!-- 검색조건이 있다면 검색조건에 맞는 게시글 찾기 -->
+		<if test="choice != null and choice != '' and search != null and search != '' ">
+			<if test="choice == 'userNickName'">
+				AND NICKNAME LIKE '%'||#{search}||'%'
+			</if>
+			<if test="choice == 'userContent'">
+				AND CONTENT LIKE '%'||#{search}||'%'
+			</if>
+		</if>
+</select>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </mapper>

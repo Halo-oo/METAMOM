@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".KcalBMI.BmiMain">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_bmi_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/white"/>
+
+    <RadioGroup
+            android:id="@+id/rgUnits"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center_vertical"
+            android:layout_below="@id/toolbar_bmi_activity"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/drawable_radio_group_tab_background"
+            android:orientation="horizontal">
+
+        <RadioButton
+                android:id="@+id/rbMetricUnits"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="0.50"
+                android:background="@drawable/drawable_units_tab_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="미터 단위"
+                android:fontFamily="@font/font_content_bold"
+                android:textColor="@drawable/drawable_units_tab_text_color_selector"
+                android:textSize="14sp" />
+
+        <RadioButton
+                android:id="@+id/rbUsUnits"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="0.50"
+                android:background="@drawable/drawable_units_tab_selector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="피트&amp;파운드 단위"
+                android:fontFamily="@font/font_content_bold"
+                android:textColor="@drawable/drawable_units_tab_text_color_selector"
+                android:textSize="14sp" />
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMetricUnitWeight"
+            android:layout_below="@id/rgUnits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/meta_green01"
+            app:hintTextColor="@color/meta_purple01"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etMetricUnitWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="몸무게 (in kg)"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/font_content_regular"
+                android:textSize="14sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMetricUnitHeight"
+            android:layout_below="@+id/tilMetricUnitWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:boxStrokeColor="@color/meta_green01"
+            app:hintTextColor="@color/meta_purple01"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etMetricUnitHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_content_regular"
+                android:hint="키 (in cm)"
+                android:inputType="numberDecimal"
+                android:textSize="14sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilUsMetricUnitWeight"
+            android:layout_below="@id/rgUnits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/meta_green01"
+            app:hintTextColor="@color/meta_purple01"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etUsMetricUnitWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="몸무게 (in pounds)"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/font_content_regular"
+                android:textSize="14sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_below="@id/tilMetricUnitWeight"
+            android:id="@+id/tilMetricUsUnitHeightFeet"
+            app:boxStrokeColor="@color/meta_green01"
+            app:hintTextColor="@color/meta_purple01"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/view"
+            android:layout_alignParentStart="true"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_toStartOf="@id/view"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="6dp"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etUsMetricUnitHeightFeet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="피트"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/font_content_regular"
+                android:textSize="14sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rgUnits"
+            android:layout_centerHorizontal="true" />
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_below="@id/tilMetricUnitWeight"
+            android:id="@+id/tilMetricUsUnitHeightInch"
+            app:boxStrokeColor="@color/meta_green01"
+            app:hintTextColor="@color/meta_purple01"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/view"
+            android:layout_toEndOf="@id/view"
+            android:visibility="gone"
+            tools:visibility="visible"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="6dp"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etUsMetricUnitHeightInch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="인치"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/font_content_regular"
+                android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+            android:id="@+id/llDisplayBMIResult"
+            android:layout_below="@id/tilMetricUnitHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:padding="10dp"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            tools:visibility="visible">
+
+        <TextView
+                android:id="@+id/tvYourBMI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:fontFamily="@font/font_content_regular"
+                android:text="회원님의 BMI는"
+                android:textColor="@color/meta_grey01"
+                android:textAllCaps="true"
+                android:textSize="16sp" />
+
+        <TextView
+                android:id="@+id/tvBMIValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/font_content_bold"
+                android:textSize="18sp"
+                android:textColor="@color/meta_grey01"
+                tools:text="15.00" />
+
+        <TextView
+                android:id="@+id/tvBMIType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/font_content_bold"
+                android:textColor="@color/meta_purple01"
+                tools:text="정상입니다"
+        />
+
+        <TextView
+                android:id="@+id/tvBMIDescription"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/font_content_regular"
+                android:textColor="@color/meta_grey01"
+                android:textSize="16sp"
+                tools:text="정상입니다."
+        />
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/btnCalculateUnits"
+            android:layout_below="@+id/llDisplayBMIResult"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:paddingBottom="10dp"
+            android:text="계산하기"
+            android:fontFamily="@font/font_content_bold"
+            android:textSize="14sp"
+            android:background="@drawable/btn_shadow"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+</RelativeLayout>

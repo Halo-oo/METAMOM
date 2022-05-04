@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+
+            android:layout_marginEnd="24dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                tools:srcCompat="@tools:sample/avatars"
+                android:scaleType="centerCrop"
+                android:id="@+id/profileImageView"
+                android:padding="12dp"
+                android:backgroundTint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+        />
+        <TextView
+                android:id="@+id/nickNameTextView"
+                android:text="NickName"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/font_content_bold"
+                android:textColor="@color/meta_grey02"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                app:layout_constraintStart_toEndOf="@+id/profileImageView"
+        />
+        <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/ic_more_horiz"
+                android:id="@+id/settingImageButton"
+                android:padding="0sp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="385dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/no_image"
+            android:id="@+id/contentImageView"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+        <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_favorite"
+                android:id="@+id/likeImageButton"
+                android:padding="0sp"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"/>
+        <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_textsms"
+                android:id="@+id/commentImageButton"
+                android:padding="0sp"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/white"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toEndOf="@+id/likeImageButton"/>
+
+        <TextView
+                android:id="@+id/dateTextView"
+                android:text="~~시간 전"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_content_regular"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:id="@+id/likeCountTextView"
+                android:text="좋아요 @개"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/font_content_regular"
+                android:textSize="12sp"
+                android:textColor="@color/meta_grey02"
+                android:gravity="center_vertical"
+        />
+        <TextView
+                android:id="@+id/commentCountTextView"
+                android:text="댓글 @@개"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="24dp"
+                android:gravity="center|end"
+                android:layout_gravity="end"
+                android:fontFamily="@font/font_content_regular"
+                android:textColor="@color/meta_grey02"
+                android:textSize="12sp"/>
+    </LinearLayout>
+    <TextView
+            android:id="@+id/contentTextView"
+            android:text="TextView"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/font_content_regular"
+            android:textColor="@color/meta_grey01"
+            android:maxLines="4"/>
+
+</LinearLayout>

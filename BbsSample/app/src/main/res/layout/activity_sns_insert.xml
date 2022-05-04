@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".sns.SnsInsertActivity">
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:id="@+id/snsInsertToolbar"
+            android:background="@color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+        <ImageButton
+                android:id="@+id/camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ic_camera"/>
+        <ImageButton
+                android:id="@+id/picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_image"/>
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="348dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars"
+            android:id="@+id/avatars"/>
+
+    <EditText
+            android:id="@+id/snsContentEditText"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:fontFamily="@font/font_content_regular"
+            android:textSize="14sp"
+            android:textColor="@color/meta_grey01"
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="false"
+            android:hint="문구를 입력해주세요.."
+            android:ems="10"
+            android:maxLines="4"
+            android:ellipsize="end"/>
+
+
+
+</LinearLayout>

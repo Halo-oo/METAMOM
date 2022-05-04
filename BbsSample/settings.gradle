@@ -1,0 +1,13 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/'}
+
+        /* #21# for 부트페이 결제 */
+        maven { url 'https://jitpack.io' }
+    }
+}
+rootProject.name = "BbsSample"
+include ':app'

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".recipe2.DetailRecipe">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/reciDetailImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:scaleType="centerCrop"/>
+
+            <TextView
+                    android:id="@+id/reciDetailTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/font_title"
+                    android:text="요리 이름"
+                    android:textSize="24sp"
+                    android:textColor="@color/meta_grey01"
+                    android:gravity="center"
+                    android:layout_gravity="center"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/meta_grey04"/>
+
+            <GridView
+                    android:id="@+id/reciGridView"
+                    android:numColumns="auto_fit"
+                    android:layout_width="match_parent"
+                    android:layout_height="194dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reciRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="subtype">
+        <item>유형 선택</item>
+        <item>다이어트</item>
+        <item>운동</item>
+        <!--<item>건강</item>-->
+    </string-array>
+
+    <!-- #21# 중간발표 이후 가격 조정 -->
+    <string-array name="subperiod">
+        <item>기간 선택</item>
+        <item>1개월[1,000원]</item>
+        <item>3개월[3,000원]</item>
+        <item>5개월[5,000원]</item>
+    </string-array>
+
+    <string-array name="subtime">
+        <item>시간 선택</item>
+        <item>아침</item>
+        <item>점심</item>
+        <item>저녁</item>
+        <item>간식</item>
+    </string-array>
+
+</resources>

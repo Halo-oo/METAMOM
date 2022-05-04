@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".subscribe.SubInfoActivity">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/subInfo_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:titleTextColor="@color/meta_grey01"
+            app:titleTextAppearance="@style/TitleBarTextAppearance"
+            android:background="@color/meta_white" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/sub_textView7"
+            android:text="구독 정보" android:gravity="center_vertical" android:textSize="20dp"
+            android:fontFamily="@font/font_content_bold"
+            android:layout_width="wrap_content" android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="24dp"
+            app:layout_constraintHorizontal_bias="0.02" app:layout_constraintTop_toBottomOf="@+id/subInfo_toolbar"/>
+    <TextView
+            android:id="@+id/sub_textView9"
+            android:text="ID"
+            style="@style/SubInfoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sub_textView7"
+            app:layout_constraintHorizontal_bias="0.017"/>
+    <TextView
+            android:id="@+id/subInfo_IdTxt"
+            style="@style/SubInfoValueTextView"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sub_textView9"
+            app:layout_constraintHorizontal_bias="0.312"/>
+    <TextView
+            android:id="@+id/sub_textView13"
+            android:text="신청 유형"
+            style="@style/SubInfoTextView"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subInfo_IdTxt"
+            app:layout_constraintHorizontal_bias="0.02"/>
+    <TextView
+            android:id="@+id/subInfo_TypeTxt"
+            style="@style/SubInfoValueTextView"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.312" app:layout_constraintTop_toBottomOf="@+id/sub_textView13"/>
+    <TextView
+            android:id="@+id/sub_textView15"
+            android:text="신청 기간"
+            style="@style/SubInfoTextView"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subInfo_TypeTxt"
+            app:layout_constraintHorizontal_bias="0.02"/>
+    <TextView
+            android:id="@+id/subInfo_PeriodTxt"
+            style="@style/SubInfoValueTextView"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintTop_toBottomOf="@+id/sub_textView15"/>
+    <TextView
+            android:id="@+id/sub_textView16"
+            android:text="구독 시작날짜"
+            style="@style/SubInfoTextView"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subInfo_PeriodTxt"
+            app:layout_constraintHorizontal_bias="0.021"/>
+    <TextView
+            android:id="@+id/subInfo_StartDayTxt"
+            style="@style/SubInfoValueTextView"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintTop_toBottomOf="@+id/sub_textView16"/>
+
+    <TextView
+            android:id="@+id/sub_textView17"
+            android:text="신청 식단시간"
+            style="@style/SubInfoTextView"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subInfo_StartDayTxt"
+            app:layout_constraintHorizontal_bias="0.021"/>
+    <CheckBox
+            android:id="@+id/subInfo_MorningChkBox"
+            android:text="아침 Morning"
+            style="@style/SubInfoCheckBox"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312" app:layout_constraintTop_toBottomOf="@+id/sub_textView17"/>
+    <CheckBox
+            android:id="@+id/subInfo_LunchChkBox"
+            android:text="점심 Lunch"
+            style="@style/SubInfoCheckBox"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintTop_toBottomOf="@+id/subInfo_MorningChkBox"/>
+    <CheckBox
+            android:id="@+id/subInfo_DinnerChkBox"
+            android:text="저녁 Dinner"
+            style="@style/SubInfoCheckBox"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintTop_toBottomOf="@+id/subInfo_LunchChkBox"/>
+    <CheckBox
+            android:id="@+id/subInfo_SnackChkBox"
+            android:text="간식 Snack"
+            style="@style/SubInfoCheckBox"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subInfo_DinnerChkBox"
+            app:layout_constraintHorizontal_bias="0.312" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

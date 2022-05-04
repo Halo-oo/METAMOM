@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>레시피</title>
+
+<!-- jquery, 부트스트랩 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="icon" href="images/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css" />
+<script defer src="js/main.js"></script>
+
+
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@font-face {
+  font-family: 'score';
+  src: url('./fonts/SCDream5.otf') format('truetype');
+}
+@font-face {
+  font-family: 'score-slim';
+  src: url('fonts/SCDream1.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cwDangam';
+  src: url('fonts/CwDangam.otf') format('truetype');
+}
+*{
+	font-family: 'score', sans-serif;
+} 
+
+.h2title{
+	font-size: 40px;
+	text-align: center;
+}
+.imgdetail{
+	width: 500px;
+	height: 320px;	
+	border-radius: 13px;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+.title{
+	display: flex;
+	justify-content: center;
+	font-size: 35px;
+}
+.brief{
+	display: flex;
+	justify-content: center;
+	font-size: 18px;
+	color: rgb(145, 145, 145);
+}
+.ingredient{
+	display: flex;
+	justify-content: center;
+}
+.ingretitle{
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;	
+	font-size: 20px;
+	color: #6A00F4;
+}
+.ingreitem{
+	width: 200px;
+	padding-left: 50px;
+}
+.imgrecipe{
+	width: 270px;
+	height: 220px;
+	margin-bottom: 20px;
+	margin-left: 40px;
+	border-radius: 10px;
+}
+.recipe{
+	display: flex;
+	justify-content: center;
+}
+.textrecipe{
+	width: 300px;
+
+}
+.box{
+	width: 400px;
+	vertical-align: middle;
+	padding-left: 15px; 
+	font-size: 20px;
+}
+</style>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="inner">
+      <a href="main.html" class="logo">
+        <img src="images/logo_title4.png" alt="LOGO">
+      </a>
+
+      <div class="sub-menu">
+        <div class="search">
+          <input type="text" />
+          <div class="material-icons">search</div>
+        </div>
+      </div> 
+
+      <ul class="main-menu">
+        <li class="item">
+          <img src="./images/add_account.png" class="menu_img" />
+          &nbsp;&nbsp;<a class="item__name" href="memManagement.html">회원관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/sns.png" class="menu_img" />
+          &nbsp;<a class="item__name" href="">SNS관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/book.png" class="menu_img" />
+          <a class="item__name" href="recipeMain.html">레시피</a>
+        </li>
+      </ul>
+    </div>
+  </header>	
+  <br><br><br><br><br><br><br><br><br><br>
+
+
+<p class="h2title">레시피</p>
+<br><br><br>
+
+<div>
+
+	<div id="detail"></div>
+	
+</div>
+
+
+
+
+<script type="text/javascript">
+const url = new URL(location.href);
+const urlParams = url.searchParams;
+let recipeSeq = urlParams.get("recipeSeq");
+
+
+
+$(document).ready(function(){
+	
+	$.ajax({
+		url:"http://localhost:3000/getRecipeWeb",
+		type:"post",
+		data:{recipeSeq:recipeSeq, "recipeName":recipeSeq, "foodImage":"foodImage", "brief":"brief", "recipeImage":"recipeImage", "recipe":"recipe" },
+		
+		success:function(list){
+			
+			$.each(list, function (i, item){
+								 
+			 	 let str = "<div >" + 
+							"<div>" +
+			 					"<img src='http://14.39.38.168:3000/upload/" + item.foodImage +"' class='imgdetail'>" + 			
+			 	 			"</div><br>" +
+							"<div class='title'>" + item.recipeName + "</div><br>" +
+							"<div class='brief'>" + item.brief + "</div><br>" +
+							"<div class='ingretitle'> 재료ingredient</div><br>" +
+							"<div class='ingredient'>" + 
+								"<table>";
+								
+									let c = new Array();
+									c = item.ingredient.split('!');
+																		
+																	
+									for(var i=0; i < c.length; i++){ 
+										"<tr>"
+										if(i % 2 == 0){		 
+											str += "<td class='ingreitem'>" + c[i] + "</td>" 	
+										}else{
+											str += "<td class='ingreitem'>" + c[i] + "</td>" +
+										"</tr><br>"
+										}	
+										
+									};																		
+			/* 						
+						 str += "</table>" +
+							"</div>" +
+							
+							"<div class='brief'>" + 
+								"<table>";
+								
+									let d = new Array();
+									d = item.ingredient.split('!');
+																		
+																	
+									for(var i=0; i < d.length; i++){ 
+											
+										if(d[i] % 2 == 1){
+											"<tr>" 
+											str += "<td>" + d[i] + "</td>"
+											+ "</tr>"
+										}									
+									};		 */																		
+								
+						str += "</table>" +
+							"</div><br><br>" +
+							
+							"<div>" + 
+								 "<table class='recipe'>";										
+									
+									let a = new Array();
+									let b = new Array();
+									a = item.recipeImage.split('/');
+									b = item.recipe.split('!');
+									
+									for(var i=0 ; i < a.length; i++){
+										
+										str += "<tr>" + 
+													"<td class='box'>" + b[i] + "</td>" +
+													"<td>" + 
+														"<img src='http://14.39.38.168:3000/upload/" + a[i] + "' class='imgrecipe'>" + 
+													"</td>" +
+										   	   "</tr>"
+									}; 
+									
+						str += "</table>" +
+						   "</div>";
+							
+				
+				$("#detail").append(str);
+
+			});	 
+			
+
+		},
+		error:function(){
+			alert('error');
+		}
+		
+		
+	});	
+});
+
+</script>
+
+
+</body>
+</html>

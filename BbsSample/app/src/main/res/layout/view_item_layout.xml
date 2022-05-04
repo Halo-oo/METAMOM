@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_margin="5dp">
+
+    <TextView
+            android:id="@+id/writerTxt"
+            android:layout_width="50dp"
+            android:layout_height="38dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="번호"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="24dp"/>
+
+    <TextView
+            android:id="@+id/cmtContentTxt"
+            android:layout_width="464dp"
+            android:layout_height="101dp"
+            android:textSize="25sp"
+            tools:text="제목"
+            app:layout_constraintTop_toTopOf="@+id/writerTxt" app:layout_constraintStart_toEndOf="@+id/writerTxt"
+            android:layout_marginStart="20dp"/>
+    <TextView
+            android:id="@+id/cmtNickNameTxt"
+            android:layout_width="221dp"
+            android:layout_height="34dp"
+            android:textSize="17sp"
+            tools:text="작성자"
+            app:layout_constraintStart_toStartOf="@+id/cmtContentTxt" app:layout_constraintTop_toBottomOf="@+id/cmtContentTxt"
+            android:layout_marginTop="12dp"/>
+    <TextView
+            android:text="조회수"
+            android:layout_width="213dp"
+            android:layout_height="34dp" android:id="@+id/cmtWriteTimeTxt"
+            app:layout_constraintTop_toTopOf="@+id/cmtNickNameTxt" app:layout_constraintStart_toEndOf="@+id/cmtNickNameTxt"
+            android:layout_marginStart="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

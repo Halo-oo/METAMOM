@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>METAMOM</title>
+  <link rel="icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+  <script defer src="js/main.js"></script>
+ 
+  <style>
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+	@font-face {
+	  font-family: 'score';
+	  src: url('./fonts/SCDream5.otf') format('truetype');
+	}
+	@font-face {
+	  font-family: 'score-slim';
+	  src: url('fonts/SCDream1.otf') format('truetype');
+	}
+	@font-face {
+	  font-family: 'cwDangam';
+	  src: url('fonts/CwDangam.otf') format('truetype');
+	}
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="inner">
+      <a href="main.html" class="logo">
+        <img src="images/logo_title4.png" alt="LOGO">
+      </a>
+
+      <div class="sub-menu">
+        <div class="search">
+          <input type="text" />
+          <div class="material-icons">search</div>
+        </div>
+      </div>
+
+      <ul class="main-menu">
+        <li class="item">
+          <img src="./images/add_account.png" class="menu_img" />
+          &nbsp;&nbsp;<a class="item__name" href="memManagement.html">회원관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/sns.png" class="menu_img" />
+          &nbsp;<a class="item__name" href="snsAdmin.html">SNS관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/book.png" class="menu_img" />
+          <a class="item__name" href="recipeMain.html">레시피</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <section>
+    <div class="inner">
+      <div class="banner">
+        <div class="left-column">
+          <h1><span class="grey">with</span><br><span class="green">meta</span><span class="purple">mom</span></h1>
+          <h3>당신의 건강과 맛을 책임지는 메타몸과 함께 해보세요</h3>
+          <p>원하는 체형에 맞춰 칼로리 식단을 짜주는 유료 구독서비스와 개인의 식단 일기 작성과<br>요리법을 제공하는 무료 서비스로 원하는 체형으로의 변화, 건강회복, 매일 식단을 짜는<br>스트레스 감소 효과를 제공합니다.
+          </p>
+          <div class="btn">
+            <button type="button" class="primary-btn" onclick="location.href='https://www.10000recipe.com/'">더 알아보기</button>
+            <button type="button" onclick="location.href='https://www.youtube.com/c/paikscuisine'">레시피 유튜브</button>
+          </div>
+          <div class="social-icons">
+            <img src="images/twitter.png">
+            <img src="images/instagram.png">
+            <img src="images/pinterest.png">
+            <img src="images/facebook.png">
+          </div>
+        </div>
+        <div class="right-column">
+          <img src="./images/background.png" alt="MAINIMAGE">
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

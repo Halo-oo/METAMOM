@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".KcalBMI.KcalMain">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarIdSearch"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:titleTextColor="@color/meta_grey01"
+            app:titleTextAppearance="@style/TitleBarTextAppearance"
+            android:background="@color/meta_white"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="36dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/font_title"
+                android:textColor="@color/meta_grey01"
+                android:text="하루 필요"
+                android:textSize="32sp"
+        />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:fontFamily="@font/font_title"
+                android:textColor="@color/meta_purple01"
+                android:text="칼로리"
+                android:textSize="32sp"
+        />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/font_title"
+                android:textColor="@color/meta_grey01"
+                android:text="는?"
+                android:textSize="32sp"
+        />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:text="성별"
+                    android:textSize="18sp"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_content_bold"
+                    android:textColor="@color/meta_grey02"
+                    android:id="@+id/textView3"/>
+
+            <RadioGroup
+                    android:id="@+id/genderRG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="12dp">
+                <RadioButton
+                        android:text="남자"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/maleRadio"/>
+                <RadioButton
+                        android:text="여자"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:id="@+id/femaleRadio"/>
+            </RadioGroup>
+
+            <TextView
+                    android:id="@+id/genderText"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <TextView
+                    android:text="키"
+                    android:textSize="18sp"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_content_bold"
+                    android:textColor="@color/meta_grey02"
+                    android:id="@+id/textView9"/>
+
+            <EditText
+                    android:id="@+id/heightEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/font_content_regular"
+                    android:textColor="@color/meta_grey01"
+                    android:textSize="14sp"
+                    android:hint="키를 입력하세요"
+                    android:layout_marginStart="12dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <TextView
+                    android:text="몸무게"
+                    android:textSize="18sp"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_content_bold"
+                    android:textColor="@color/meta_grey02"
+                    android:id="@+id/textView10"/>
+
+            <EditText
+                    android:id="@+id/weightEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/font_content_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/meta_grey01"
+                    android:hint="몸무게를 입력하세요"
+                    android:layout_marginStart="12dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginEnd="24dp"
+                      android:layout_marginTop="12dp"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical">
+
+            <TextView
+                    android:text="나이대"
+                    android:textSize="18sp"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_content_bold"
+                    android:textColor="@color/meta_grey02"
+                    android:id="@+id/textView14"/>
+
+            <EditText
+                    android:id="@+id/ageEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:background="@color/transparent"
+                    android:hint="나이를 입력하세요"
+                    android:textColor="@color/meta_grey01"
+                    android:fontFamily="@font/font_content_regular"
+                    android:textSize="14sp"
+                    android:layout_marginStart="12dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="12dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginEnd="24dp"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical">
+
+            <TextView
+                    android:text="활동량"
+                    android:textSize="18sp"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_gravity="top"
+                    android:fontFamily="@font/font_content_bold"
+                    android:textColor="@color/meta_grey02"
+                    android:id="@+id/textView15"/>
+
+            <RadioGroup
+                    android:id="@+id/runRG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/textView15"
+                    app:layout_constraintStart_toEndOf="@+id/textView15"
+                    android:layout_marginStart="12dp">
+
+                <RadioButton
+                        android:id="@+id/runBtn1"
+                        android:text="활동 안함"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_content_regular"
+                        android:textSize="12sp"
+                />
+                <RadioButton
+                        android:id="@+id/runBtn2"
+                        android:text="가벼운 활동 \n(평소 가벼운 운동이나 스포츠를 즐겨요)"
+                        android:fontFamily="@font/font_content_regular"
+                        android:textSize="12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <RadioButton
+                        android:id="@+id/runBtn3"
+                        android:text="보통 활동\n(평소 적당한 운동이나 스포츠를 즐겨요)"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_content_regular"
+                        android:textSize="12sp"/>
+                <RadioButton
+                        android:id="@+id/runBtn4"
+                        android:text="많은 활동\n(평소 강렬한 운동이나 스포츠를 즐겨요)"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_content_regular"
+                        android:textSize="12sp"/>
+                <RadioButton
+                        android:id="@+id/runBtn5"
+                        android:text="격심한 활동\n(평소 매우 심한 운동을 하거나 육체를 쓰는 직업이예요.)"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_content_regular"
+                        android:textSize="12sp"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/kcalBtn"
+                android:text="알아보기"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/btn_shadow"
+                android:textSize="14sp"
+                android:fontFamily="@font/font_content_bold"/>
+
+        <TextView
+                android:id="@+id/needKcal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="36dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+        />
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
+

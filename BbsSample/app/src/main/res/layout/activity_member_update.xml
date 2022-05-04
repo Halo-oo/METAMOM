@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MemberUpdateActivity">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/memUpdateToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:titleTextColor="@color/meta_grey01"
+            app:titleTextAppearance="@style/TitleBarTextAppearance"
+            android:background="@color/meta_white"/>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/memUpdate_imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/metamom_splash_logo"/>
+
+            <!-- #21# style.xml 내 TextView > MemberUpdateTextView, EditText > MemberUpdateEditText 참고-->
+            <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/accUpdateProfileImageView"
+                    android:padding="12dp"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginTop="12dp"
+            />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+            >
+
+                <ImageButton
+                        android:id="@+id/accUpdateCameraImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:background="@drawable/ic_camera"/>
+                <ImageButton
+                        android:id="@+id/accUpdateAlbumImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_image"/>
+
+            </LinearLayout>
+            <TextView
+                    android:id="@+id/memUpdate_textView2"
+                    android:text="ID"
+                    style="@style/MemberUpdateTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/memUpdate_idEditTxt"
+                    style="@style/MemberUpdateEditText"
+                    android:inputType="text"
+                    android:hint="회원의 ID"
+                    android:enabled="false"
+                    android:textColor="@color/meta_grey02"
+                    android:layout_width="match_parent"
+                    android:ems="10"/>
+            <TextView
+                    android:id="@+id/memUpdate_textView"
+                    android:text="닉네임"
+                    style="@style/MemberUpdateTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            <EditText
+                    android:id="@+id/memUpdate_nicknameEdit"
+                    style="@style/MemberUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:hint="회원의 nickname"
+                    android:ems="10"/>
+            <TextView
+                    android:id="@+id/memUpdate_textView3"
+                    style="@style/MemberUpdateTextView"
+                    android:text="이름"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/memUpdate_nameEdit"
+                    style="@style/MemberUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:hint="회원의 name"
+                    android:ems="10"/>
+            <TextView
+                    android:id="@+id/memUpdate_textView4"
+                    style="@style/MemberUpdateTextView"
+                    android:text="EMAIL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            <EditText
+                    android:id="@+id/memUpdate_emailEdit"
+                    style="@style/MemberUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:hint="회원의 email"
+                    android:ems="10"/>
+            <TextView
+                    android:id="@+id/memUpdate_textView5"
+                    style="@style/MemberUpdateTextView"
+                    android:text="PHONE"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            <EditText
+                    android:id="@+id/memUpdate_phoneEdit"
+                    style="@style/MemberUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:inputType="phone"
+                    android:hint="회원의 phone"
+                    android:ems="10"/>
+            <TextView
+                    android:id="@+id/memUpdate_textView9"
+                    style="@style/MemberUpdateTextView"
+                    android:text="키"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/memUpdate_heightEdit"
+                    style="@style/MemberUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
+                    android:hint="회원의 키"
+                    android:ems="10"/>
+            <TextView
+                    android:id="@+id/memUpdate_textView10"
+                    style="@style/MemberUpdateTextView"
+                    android:text="몸무게"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            <EditText
+                    android:id="@+id/memUpdate_weightEdit"
+                    style="@style/MemberUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
+                    android:hint="회원의 몸무게"
+                    android:ems="10"/>
+            <TextView
+                    android:id="@+id/memUpdate_textView14"
+                    style="@style/MemberUpdateTextView"
+                    android:text="생년월일(8자리로 입력해주세요)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            <EditText
+                    android:id="@+id/memUpdate_birthEdit"
+                    style="@style/MemberUpdateEditText"
+                    android:layout_width="match_parent"
+                    android:inputType="date"
+                    android:hint="회원의 생년월일"
+                    android:ems="10"/>
+            <RadioGroup
+                    android:id="@+id/memUpdate_genderRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                <RadioButton
+                        android:id="@+id/memUpdate_radioMaleBtn"
+                        android:text="남"
+                        android:textSize="15dp"
+                        android:buttonTint="@color/meta_green01"
+                        android:fontFamily="@font/font_content_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <RadioButton
+                        android:id="@+id/memUpdate_radioFemaleBtn"
+                        android:text="여"
+                        android:textSize="15dp"
+                        android:buttonTint="@color/meta_green01"
+                        android:fontFamily="@font/font_content_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="100dp"/>
+            </RadioGroup>
+
+            <Button
+                    android:id="@+id/memUpdate_updateBtn"
+                    android:text="수정"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginBottom="24dp"
+                    android:paddingBottom="10dp"
+                    android:fontFamily="@font/font_content_bold"
+                    android:textSize="14sp"
+                    android:background="@drawable/btn_shadow"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

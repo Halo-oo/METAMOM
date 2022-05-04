@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="UTF-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <title>METAMOM</title>
+	  <link rel="icon" href="images/favicon.png" />
+	  <link rel="stylesheet" href="css/style.css" />
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <!-- google api -->
+	  <meta name="google-signin-client_id"
+	    content="995633732040-u0gt5a3dqoa6nnovqnd0brs0nqct21nt.apps.googleusercontent.com">
+	  <script src="https://apis.google.com/js/platform.js" async defer></script>
+	  <!-- 구글 api 사용을 위한 스크립트  -->
+	  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+			@font-face {
+			  font-family: 'score';
+			  src: url('./fonts/SCDream5.otf') format('truetype');
+			}
+			@font-face {
+			  font-family: 'score-slim';
+			  src: url('fonts/SCDream1.otf') format('truetype');
+			}
+			@font-face {
+			  font-family: 'cwDangam';
+			  src: url('fonts/CwDangam.otf') format('truetype');
+			}
+		</style>
+	</head>
+	
+	<body>
+    <section class="login-form">
+      <img src="images/meta_profile.png" />
+      <div id="title">
+        <span class="title__green">META</span><span class="title__purple">MOM</span>
+      </div>
+          <form id="frm" class="form">
+            <div class="int-area">
+                <input type="text" name="id" id="id" autocomplete="off" required>
+                <label for="id">아이디</label>
+            </div>
+            <div class="int-area">
+                <input type="password" name="pwd" id="pwd" autocomplete="off" required>
+                <label for="pwd">비밀번호</label>
+            </div>
+            <div class="btn-area">
+              <button id="login" type="button" onclick="login()">로그인</button>
+            </div>		
+          </form>
+              <div class="caption">
+                  <a href="account.html">회원가입</a>
+              </div>
+          </section>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function () {
+		
+		$("#login").click(function(){
+			$.ajax({
+				url:"http://localhost:3000/loginWeb",
+				type:"post",
+				data:{ id:$("#id").val(), pwd:$("#pwd").val() },
+				success:function(json){
+					// alert('success');
+					if(json == ""){
+						alert("id나 비밀번호를 확인하세요");
+						$("#id").val("");
+						$("#pwd").val("");
+					}else{
+						sessionStorage.setItem("login", JSON.stringify(json));
+						// alert(json.name + "님 환영합니다");	
+						
+						//location.href = "recipeMain.html";
+						location.href = "main.html";
+					}			
+				},
+	
+				error:function(){
+					alert('error');
+				}
+			});
+		});
+		
+	});
+	
+	
+	/* google api */
+	function init(){
+		gapi.load('auth2', function(){
+			gapi.auth2.init();
+			options = new gapi.auth2.SigninOptionsBuilder();
+			options.setPrompt('select_account');
+			options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+			gapi.auth2.getAuthInstance().attachClickHandler('googleLogin', options, onSignIn, onSignInFailure);		
+		});
+	}
+	
+	function onSignIn(googleUser) {
+		var access_token = googleUser.getAuthResponse().access_token
+		$.ajax({
+			url: 'https://people.googleapis.com/v1/people/me',
+			data: {personFields:'birthdays', key:'AIzaSyAZsYvH8Wq99F0fPmVPyvLMovav2jC_7VI', 'access_token': access_token},
+			method:'GET'
+		})
+		.done(function(e){
+			var profile = googleUser.getBasicProfile();
+	
+			console.log(profile)	
+		})
+		.fail(function(e){
+			console.log(e);
+		})
+		function onSignInFailure(t){		
+			console.log(t);
+		}	
+	}	
+			
+	function onSignIn(googleUser) {
+		  var profile = googleUser.getBasicProfile();
+		  console.log('ID: ' + profile.getId()); 
+		  console.log('Name: ' + profile.getName());
+		  console.log('Image URL: ' + profile.getImageUrl());
+		  console.log('Email: ' + profile.getEmail()); 
+	}
+	</script>
+	</body>
+</html>

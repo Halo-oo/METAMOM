@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>     <!--추가-->
+    <style name="TitleBarTextAppearance" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/meta_grey02</item>
+    </style>
+
+    <!-- #21# 마이페이지 _회원정보 페이지 style -->
+    <!-- 1) TextView -->
+    <style name="MemberMypageTextView" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <!-- 2) EditText -->
+    <style name="MemberMypageEditText" parent="android:Widget.EditText">
+        <item name="android:textSize">15dp</item>
+        <item name="fontFamily">@font/font_content_regular</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:background">@color/meta_grey05</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:fontFamily">@font/font_content_regular</item>
+    </style>
+
+    <!-- #21# 마이페이지 _회원수정 페이지 style -->
+    <!-- 1) TextView -->
+    <style name="MemberUpdateTextView" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">@color/meta_grey02</item>
+    </style>
+    <!-- 2) EditText -->
+    <style name="MemberUpdateEditText" parent="android:Widget.EditText">
+        <item name="android:background">@android:color/transparent</item>   <!-- EditText 밑줄 투명색으로 -->
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/meta_green01</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingLeft">24dp</item>
+    </style>
+
+    <!-- #21# 오늘의 식단 style -->
+    <!-- 1) 오늘의 식단 title(아/점/저/간)에 적용할 style -->
+    <style name="SubTodayMealTitle" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/font_content_bold</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">@color/meta_green01</item>
+    </style>
+
+    <!-- #21# 구독정보 style -->
+    <!-- 1) 항목 TextView -->
+    <style name="SubInfoTextView" parent="android:TextAppearance">
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:textColor">@color/meta_purple01</item>
+    </style>
+    <!-- 2) info값 TextView -->
+    <style name="SubInfoValueTextView" parent="android:TextAppearance">
+        <item name="android:textSize">15dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:layout_width">520dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+    <!-- 3) CheckBox -->
+    <style name="SubInfoCheckBox" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:enabled">false</item>
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:layout_width">520dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+
+    <!-- #21# 상품결제 style -->
+    <!-- 1) 항목 TextView -->
+    <style name="SubPurchaseTextView" parent="android:TextAppearance">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+    <!-- 2) 값 TextView -->
+    <style name="SubPurchaseValueTextView" parent="android:TextAppearance">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:textColor">@color/meta_green01</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+
+    <style name="emphasisText" parent="@android:style/Widget.TextView">
+        <item name="android:fontFamily">@font/font_content_bold</item>
+    </style>
+
+    <style name="normalText" parent="@android:style/Widget.TextView">
+        <item name="android:fontFamily">@font/font_content_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/meta_grey01</item>
+    </style>
+
+</resources>

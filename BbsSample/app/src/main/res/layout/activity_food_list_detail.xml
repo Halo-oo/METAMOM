@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".FoodListMeals.FoodListDetail">
+
+    <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="342dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            tools:srcCompat="@tools:sample/avatars"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            >
+
+        <TextView
+                android:id="@+id/dateTxt"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/meta_grey01"
+                android:fontFamily="@font/font_content_regular"
+                android:hint="2022년 3월 31일"/>
+
+        <TextView
+                android:id="@+id/kindTxt"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:fontFamily="@font/font_content_bold"
+                android:textColor="@color/meta_grey01"
+                android:hint="아침"/>
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/memoTxt2"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:padding="10dp"
+            android:background="@drawable/food_list_meals_add_background"
+            android:textSize="12sp"
+            android:fontFamily="@font/font_content_regular"
+            android:textColor="@color/meta_grey01"/>
+
+    <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="28dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/font_content_regular"
+            android:textColor="@color/meta_grey01"
+            android:textSize="14sp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/updateBtn"
+                android:text="수정"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:elevation="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/meta_green01"
+                android:textSize="14sp"
+                android:fontFamily="@font/font_content_bold"
+        />
+
+        <Button
+                android:id="@+id/delBtn"
+                android:text="삭제"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:elevation="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="6dp"
+                android:backgroundTint="@color/meta_red01"
+                android:textSize="14sp"
+                android:fontFamily="@font/font_content_bold"
+        />
+    </LinearLayout>
+
+</LinearLayout>

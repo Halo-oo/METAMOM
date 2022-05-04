@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>레시피</title>
+
+<!-- jquery, 부트스트랩 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="icon" href="images/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css" />
+<script defer src="js/main.js"></script>
+
+<style type="text/css">
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@font-face {
+  font-family: 'score';
+  src: url('./fonts/SCDream5.otf') format('truetype');
+}
+@font-face {
+  font-family: 'score-slim';
+  src: url('fonts/SCDream1.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cwDangam';
+  src: url('fonts/CwDangam.otf') format('truetype');
+}
+*{
+	font-family: 'score', sans-serif;
+} 
+
+.title{
+	font-size: 50px;
+	text-align: center;
+}
+.array{
+	display: flex;
+	flex-wrap: wrap;
+	width: 900px;
+	
+	margin: 0 auto;
+	justify-content: center;
+}
+.list{
+	width: 250px;
+	height: 300px;
+	border: 1px;
+	/* justify-content: center; */
+	/* align-content: center; */
+	display: flex;
+ 	flex-direction: column; 
+	text-decoration: none;	
+	border: 1px solid #a3a1a1;
+	border-radius: 8px 8px 0px 0px;
+	margin: 5px 5px 0px 0px;
+	padding-top: 5px;
+}
+.bottomleft{
+	float: left;
+ 	border-right: 1px solid #a3a1a1;
+	border-bottom: 1px solid #a3a1a1;
+	border-left: 1px solid #a3a1a1;	
+	width: 125px;
+	justify-content: center;
+	align-content: center;
+	display: flex;
+	border-radius: 0px 0px 0px 8px;
+	margin-right: 0; 
+}
+.bottomright{
+	float: left;
+ 	border-right: 1px solid #a3a1a1;
+	border-bottom: 1px solid #a3a1a1;
+	width: 124px;
+	justify-content: center;
+	align-content: center;
+	display: flex;
+	border-radius: 0px 0px 8px 0px;
+	margin-left: 0;
+}
+.img{
+	margin-top: 0;
+	width: 220px;
+	height: 150px;
+	border-radius: 10% 10% 20% 20%;
+	overflow: hidden;
+	margin: 0 0 0 15px;
+}
+.btn{
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+.itemtxt{
+	width: 220px;
+ 	margin: 0 0 0 12px;  
+ 	text-align: center;
+}
+.name{
+	font-size: 20px;
+	font-weight: bold;
+/* 	text-align: center; */
+}
+.brief{
+	font-size: 13px;
+	width: 250px;	
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+.snip1535 {
+  background-color: #6897bb;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  font-size: 15px;
+  line-height: 1em;
+  margin: 15px 40px;
+  outline: none;
+  /* padding: 12px 40px 10px; */
+  padding: 10px 25px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 5px;
+}
+.snip1535:before,
+.snip1535:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+.snip1535:before {
+  border-color: #a3a1a1;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.snip1535:after {
+  border-bottom-width: 2px;
+  border-color: #a3a1a1;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.snip1535:hover,
+.snip1535.hover {
+  background-color: #a3a1a1;
+}
+.snip1535:hover:before,
+.snip1535.hover:before,
+.snip1535:hover:after,
+.snip1535.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+</style>
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="inner">
+      <a href="main.html" class="logo">
+        <img src="images/logo_title4.png" alt="LOGO">
+      </a>
+
+      <div class="sub-menu">
+        <div class="search">
+          <input type="text" />
+          <div class="material-icons">search</div>
+        </div>
+      </div> 
+
+      <ul class="main-menu">
+        <li class="item">
+          <img src="./images/add_account.png" class="menu_img" />
+          &nbsp;&nbsp;<a class="item__name" href="memManagement.html">회원관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/sns.png" class="menu_img" />
+          &nbsp;<a class="item__name" href="snsAdmin.html">SNS관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/book.png" class="menu_img" />
+          <a class="item__name" href="recipeMain.html">레시피</a>
+        </li>
+      </ul>
+    </div>
+  </header>	
+  <br><br><br><br><br><br>
+
+<p class="title">레시피</p>
+
+<div class="btn">
+	<a href="recipeAdd.html"><button class="snip1535">추가하기</button></a>	
+</div>
+<br>
+
+<div class="array" id="arrayA">
+	
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+		
+	//$("#button").click(function(){
+		$("#plz").html("");
+		
+		$.ajax({
+			url:"http://localhost:3000/getRecipeWeb",
+			type:"post",
+			data:{ recipeSeq:$("#recipeSeq").val(), "recipeName":"", "foodImage":"foodImage", "brief":"brief", "kcal":"kcal"  },
+			success:function(list){
+				$.each(list, function (i, item){
+							 
+					let str = "<div>"+
+								"<div class='list'>"+
+								/* "<div style='flex-grow:3'></div>"+ */
+								"<div class='img'>" + 
+									"<a href='recipedetail.html?recipeSeq=" + item.recipeSeq + "'>" + 
+										"<span style='font-size: 20px'>" + 
+											"<img src='http://14.39.38.168:3000/upload/" + item.foodImage +"' width='220px' height='170px'>" + 
+										"</span>" + 
+									"</a>" + 
+								"</div><br>"+
+								"<div class='itemtxt'>" + 
+									"<a href='recipedetail.html?recipeSeq=" + item.recipeSeq + "'>" +
+										"<span class='name'>" + item.recipeName + "</span><br><br>"+
+										"<span class='brief'>" + item.brief + "</span>" +
+									"</a>" + 
+								"</div><br>" +				
+							  	"</div>" +
+								
+								"<div class='bottomleft'>" + 
+									"<table>" + 
+										"<tr>" +
+											"<td></td><td>칼로리</td>" +
+										"</tr>" + 
+									"</table>" +
+								"</div>" + 
+								"<div class='bottomright'>" + 
+								"<table>" + 
+									"<tr>" +
+										"<td></td><td>" + item.kcal + "</td>" +
+									"</tr>" + 
+								"</table>" +
+							"</div>" + 
+							"</div>"
+
+							
+
+					$("#arrayA").append(str);
+				});
+					   
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+
+	
+	function ShowList(data){
+		console.log("!!!!!!"+data);
+		var seq = "<span>" + data.recipeSeq + "</span>"
+		$.each(data, function(index, item){
+			let a = "<tr>"
+				+ "<td>" + item.recipeSeq + "</td>";
+				+ "<td>" + item.recipeName + "</td>";
+				+ "</tr>";
+				$("plz").append(a);
+		});
+	}
+	
+	
+});
+	
+</script>
+
+</body>
+</html>

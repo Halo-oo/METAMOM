@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mul.camp.a.dao.CommentDao">
+
+<select id="getCommentList" parameterType="java.lang.Integer" resultType="mul.camp.a.dto.CommentDto">
+	SELECT SEQ, ID, WDATE, CONTENT
+	FROM BBSCOMMENT
+	WHERE SEQ=#{seq}
+	ORDER BY WDATE DESC
+</select>
+
+<insert id="writeComment" parameterType="mul.camp.a.dto.CommentDto">
+	INSERT INTO BBSCOMMENT(SEQ, ID, WDATE, CONTENT)
+	VALUES(#{seq}, #{id}, SYSDATE, #{content})
+</insert>
+
+</mapper>

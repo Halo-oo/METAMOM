@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>SNS 게시물 관리</title>
+
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.snip1535 {
+  background-color: #6897bb;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  font-size: 15px;
+  line-height: 1em;
+  /* margin: 15px 40px; */
+  margin: 1px 10px;
+  outline: none;
+  /* padding: 12px 40px 10px; */
+  padding: 10px 25px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.snip1535:before,
+.snip1535:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+.snip1535:before {
+  border-color: #a3a1a1;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.snip1535:after {
+  border-bottom-width: 2px;
+  border-color: #a3a1a1;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.snip1535:hover,
+.snip1535.hover {
+  background-color: #a3a1a1;
+}
+.snip1535:hover:before,
+.snip1535.hover:before,
+.snip1535:hover:after,
+.snip1535.hover:after {
+  height: 100%;
+  width: 100%;
+}
+</style>
+
+<!-- jquery, 부트스트랩 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div id="app" class="container">
+<form>
+
+	<h2>SNS 게시물 관리</h2>
+
+	<br>
+	<table class="table">
+		<col width="200"><col width="500">
+		<thead class="thead-light">
+	<tr>
+		<th>SNSSEQ</th><td id="SnsSeq" style="font-weight: 700;"></td>
+	</tr>
+	</thead>
+	<thead class="thead-light">
+	<tr>
+		<th>ID</th><td id="SnsId" style="font-weight: 700;"></td>
+	</tr>
+	</thead>
+	
+	<thead class="thead-light">
+	<tr>
+		<th>닉네임</th><td id="SnsNickName" style="font-weight: 700;"></td>
+	</tr>
+	</thead>
+	
+	<thead class="thead-light">
+	<tr>
+		<th>시간</th><td id="SnsDate" style="font-weight: 700;"></td>
+	</tr>
+	</thead>
+	
+	<thead class="thead-light">
+	<tr>
+		<th>내용</th>
+		<td><input type="text" id="SnsContent" name="SnsContent" size="85px"></td>
+	</tr>
+	</thead>
+	
+	
+	
+	</table>
+	<br>
+	
+	<button type="button" id="snsUpdateBtn" class="snip1535">수정</button>
+	<button type="button" id="snsDelBtn" class="snip1535">삭제</button>
+</form>
+</div>
+
+<script type="text/javascript">
+
+/* memManagement.html로부터 가지고 온 id 확인 */
+const url = new URL(location.href);		// const: 상수, URL이라는 클래스가 있음
+const urlParams = url.searchParams;
+
+let id = urlParams.get("id");			// const, let 둘다 사용해도 됨 (무관)
+let seq = urlParams.get("seq");
+ //alert("id: " + id+" seq: " + seq);
+	
+/* id에 해당하는 회원정보 드로잉 */
+$.ajax({
+	url:"http://localhost:3000/snsSearch",
+	type:"post",						
+	data:{ "seq":seq },					
+	success:function(mem){
+		 // alert(JSON.stringify(mem));	
+		 
+			$("#SnsSeq").text(mem.seq);
+			$("#SnsId").text(mem.id);
+			$("#SnsNickName").text(mem.nickname);
+			$("#SnsDate").text(mem.snsdate);
+			$("#SnsContent").val(mem.content);
+
+	},
+	error:function(){
+		alert('memberDetail.html 회원정보 수정 & 탈퇴 ajax error');
+	}
+});
+
+
+
+//let seq = Integer.parseInt($("SnsSeq").text())
+
+
+/* 수정 Button */
+$("#snsUpdateBtn").click(function() {
+	
+	// 데이터 검증 (* App 회원가입 시 입력 데이터 검증 조건과 동일)
+	if ($("#SnsContent").val().trim() == '') {
+		alert("내용을 입력해주세요");
+	} 
+	
+	else {
+		$.ajax({
+			url:"http://localhost:3000/snsWebUpdate",
+			type:"post",	
+			data: { "seq":seq,
+					"id" : "",
+					"nickname " : "",
+					"profile": "",
+					"snsdate" : "",
+					"imagecontent" : "",
+					"likecount" : 0,
+					"commentcount" : 0,
+					"content":$("#SnsContent").val(),
+					},		
+			//contentType:"application/json",
+			success:function(msg){
+				// alert(msg);
+				
+				if (msg == "YES"){
+					alert("회원정보가 수정되었습니다.");
+					location.href = "snsAdmin.html";
+				} else {
+					alert("다시 시도해주세요.");
+				}
+			},
+			error:function(){
+				alert("snsDetail.html 회원정보 수정 ajax error 발생")
+			}
+		})	
+	}
+});
+
+/* 탈퇴 Button > 실제 탈퇴하는 것이 아닌 DEL 컬럼 값 변경 */
+$("#snsDelBtn").click(function() {
+	
+	$.ajax({
+		url:"http://localhost:3000/snsCommentAllDelete",
+		type:"post",						
+		data:{ "seq":seq },					
+		success:function(msg){
+			//alert(msg);
+
+		},
+		error:function(){
+			alert("snsDetail.html 게시물 댓글 삭제 ajax error 발생")
+		}
+	});
+	
+	$.ajax({
+		url:"http://localhost:3000/snsLikeAllDelete",
+		type:"post",						
+		data:{ "seq":seq },					
+		success:function(msg){
+			//alert(msg);
+
+		},
+		error:function(){
+			alert("snsDetail.html 게시물 좋아요 삭제 ajax error 발생")
+		}
+	});
+	
+	$.ajax({
+		url:"http://localhost:3000/snsDelete",
+		type:"post",						
+		data:{ "seq":seq },					
+		success:function(msg){
+			//alert(msg);
+			
+			if (msg == 1){
+				alert("삭제 처리하였습니다.");
+				location.href = "snsAdmin.html";
+			} else {
+				alert("다시 시도해주세요.");
+			}
+		},
+		error:function(){
+			alert("snsDetail.html 게시물 삭제 ajax error 발생")
+		}
+	});
+});
+</script>
+
+</body>
+</html>

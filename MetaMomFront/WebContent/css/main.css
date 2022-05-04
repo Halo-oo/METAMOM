@@ -1,0 +1,241 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@font-face {
+  font-family: 'score';
+  src: url('fonts/SCDream5.otf') format('truetype');
+}
+@font-face {
+  font-family: 'score-slim';
+  src: url('fonts/SCDream1.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cwDangam';
+  src: url('fonts/CwDangam.otf') format('truetype');
+}
+
+/* COMMON */
+body{
+  color: #191919;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'score', sans-serif;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+/* HEADER */
+header {
+  width: 100%;
+  padding-top: 20px;
+  background-color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+}
+header > .inner {
+  height: 120px;
+}
+header .logo {
+  height: 75px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+header .logo img {
+
+}
+header .sub-menu {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+}
+header .sub-menu .search {
+  height: 34px;
+  position: relative;
+}
+header .sub-menu .search input {
+  width: 36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+  color: #777;
+  font-size: 12px;
+  transition: width .4s;
+}
+header .sub-menu .search input:focus {
+  width: 190px;
+  border-color: #6A00F4;
+}
+header .sub-menu .search .material-icons {
+  height: 24px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto;
+  transition: .4s;
+}
+header .sub-menu .search.focused .material-icons {
+  opacity: 0;
+}
+header .main-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+}
+header .main-menu .item {
+  display: flex;
+}
+header .main-menu .item .menu_img {
+  color: #6A00F4;
+  background-color: #6A00F4;
+  position: absolute;
+  margin-top: 8px;
+  height: 25px;
+  background-color: #fff;
+}
+
+header .main-menu .item .item__name {
+  padding: 10px 0px 34px 0px;
+  margin-left: 28px;
+  margin-right: 20px;
+  color: #191919;
+  font-family: 'score', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  display: block;
+  position: relative;
+}
+header .main-menu .item .item__name::after {
+  content: '';
+  width: 0;
+  height: 10px;
+  background: #6A00F4;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: -74px;
+  transition: 0.5s;
+}
+header .main-menu .item .item__name:hover::after {
+  width: 100%;
+}
+header .main-menu .item:hover .item__name {
+  color: #6A00F4;
+}
+
+section .banner {
+  display: flex;
+  position: relative;
+  margin-top: 94px;
+}
+section .left-column, .right-column {
+  flex-basis: 50%;
+}
+section .left-column {
+  position: absolute;
+  left: 4px;
+  top: 24px;
+  z-index: 3;
+}
+section .right-column {
+  position: absolute;
+  left: 320px;
+  top: 20px;
+}
+section .right-column img {
+  height: 800px;
+}
+section .left-column {
+  margin-top: 120px;
+}
+section .left-column h1 {
+  font-family: 'cwDangam';
+  word-spacing: -5px;
+  line-height: 100px;
+  font-size: 99px;
+}
+section .left-column h1 .grey {
+  color: #191919;
+}
+section .left-column h1 .purple {
+  color: #6A00F4;
+}
+section .left-column h1 .green {
+  color: #8AC926;
+}
+section .left-column h3 {
+  margin-top: 24px;
+  color: #191919;
+  font-size: 24px;
+  font-family: 'score';
+  font-weight: 600;
+  word-spacing: -2px;
+}
+section .left-column p {
+  font-size: 14px;
+  color: #999;
+  margin: 50px 0;
+}
+section .left-column .btn {
+  margin-bottom: 50px;
+}
+section .left-column .btn button {
+  font-family: 'score';
+  padding: 7px 30px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid #6A00F4;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #6A00F4;
+  background: transparent;
+}
+section .left-column .btn .primary-btn {
+  background: linear-gradient(#6A00F4, #6000df);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: #FFF;
+}
+section .left-column .social-icons {
+  display: flex;
+  width: 200px;
+  text-align: center;
+  opacity: .4;
+  position: relative;
+  margin-left: 160px;
+}
+section .left-column .social-icons::after {
+  content: '';
+  width: 150px;
+  height: 1px;
+  background: #191919;
+  position: absolute;
+  left: -160px;
+  top: 10px;
+}
+section .left-column .social-icons img {
+  height: 20px;
+  margin: 0 14px;
+}
+

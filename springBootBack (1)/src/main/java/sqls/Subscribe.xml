@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mul.camp.a.dao.SubscribeDao">
+
+<!-- #21# 구독 회원정보 가져오기 -->
+<select id="getSubInfo" parameterType="String" resultType="mul.camp.a.dto.SubscribeDto">
+	<!-- SELECT SUB_ID, SUB_TYPE, SUB_PERIOD, TO_CHAR(SUB_STARTDAY, 'YYYYMMDD')
+	FROM MATA_SUBSCRIBE
+	WHERE SUB_ID=#{id} -->
+	SELECT *
+	FROM MATA_SUBSCRIBE
+	WHERE SUB_ID=#{id}
+</select>
+
+
+<!-- #21# 구독 신청 -->
+<!-- 1) 구독회원 TABLE 내 추가 _! 만료일자를 제외한 컬럼 추가 -->
+<insert id="subAdd" parameterType="mul.camp.a.dto.SubscribeDto">
+	INSERT INTO MATA_SUBSCRIBE(SUB_ID, SUB_TYPE, SUB_PERIOD, SUB_STARTDAY, SUB_MORNING, SUB_LUNCH, SUB_DINNER, SUB_SNACK)
+	VALUES(#{subId}, #{subType}, #{subPeriod}, SYSDATE, #{subMorning}, #{subLunch}, #{subDinner}, #{subSnack})
+</insert>
+
+<!-- 1-1) 구독회원 TABLE 내 구독만료 일자 추가 -->
+<!--      ! ADD_MONTHS 사용 시 매월 마지막 일수가 다른 달(2월 28일, 짝수/홀수달 ..)은 그달의 마지막일을 리턴받는다. -->
+<update id="subAddEndday" parameterType="mul.camp.a.dto.SubscribeDto">
+	UPDATE MATA_SUBSCRIBE
+	SET SUB_ENDDAY=TO_CHAR(ADD_MONTHS(SYSDATE, +SUB_PERIOD), 'YYYYMMDD')
+	WHERE SUB_ID=#{subId}
+</update>
+
+<!-- 2) 멤버 TABLE 내 구독값 1로 수정 -->
+<update id="subUpdateMember" parameterType="mul.camp.a.dto.SubscribeDto">
+	UPDATE META_MEMBER
+	SET SUBSCRIBE=1
+	WHERE ID=#{subId}
+</update>
+
+
+<!-- #21# 구독 만료확인 및 만료 시 멤버TABLE 내 구독값 변경 -->
+<!-- 1) 구독 만료확인 -->
+<select id="subEnddayCheck" parameterType="mul.camp.a.dto.SubscribeDto" resultType="mul.camp.a.dto.SubscribeDto">
+ 	SELECT *
+	FROM MATA_SUBSCRIBE
+	WHERE SUB_ID=#{subId} AND SUB_ENDDAY > TO_CHAR(SYSDATE, 'YYYYMMDD')
+</select>
+
+<!-- 2) 멤버 TABLE 내 구독값 0으로 수정 -->
+<update id="subUpdateMemberEnd" parameterType="mul.camp.a.dto.SubscribeDto">
+	UPDATE META_MEMBER
+	SET SUBSCRIBE=0
+	WHERE ID=#{subId}
+</update>
+
+<!-- 2-1) 구독 TABLE 내 해당 사용자 삭제 -->
+<delete id="subDeleteUser" parameterType="mul.camp.a.dto.SubscribeDto">
+	DELETE FROM MATA_SUBSCRIBE
+	WHERE SUB_ID=#{subId}
+</delete>
+
+
+<!-- #21# 오늘의 다이어트 식단 랜덤 1개 select (+ 2일 이내에 추천했던 식단은 제외하고 Random으로 고름) -->
+<!-- 1) 다이어트 식단 -->
+<!--    부등호 기호 사용을 위하여 <![CDATA[로 감싸줬음 -->
+<!-- NOT EXISTS 사용 _조회 결과가 없을때만 조회, REMEMBER TABLE 내 SEQ번호와 일치하는 않는 DIET SEQ만 반환 -->
+<select id="subRandomDietMeal" parameterType="mul.camp.a.dto.SubDietMealDto" resultType="mul.camp.a.dto.SubDietMealDto">
+	SELECT *
+	FROM (SELECT * 
+			FROM META_SUBSCRIBE_DIETMEALS 
+			WHERE SUBDF_TIME=#{subdfTime} AND NOT EXISTS(SELECT * FROM META_SUBSCRIBE_REMEMBERMEALS WHERE SUBREM_ID=#{subdfID} AND SUBREM_SEQ = SUBDF_SEQ)
+			ORDER BY DBMS_RANDOM.VALUE)
+	<![CDATA[WHERE ROWNUM <= 1 AND SUBDF_KCAL <= #{subdfKcal}]]>	
+</select>
+<!-- 2) 운동 식단 -->
+<select id="subRandomExerMeal" parameterType="mul.camp.a.dto.SubExerMealDto" resultType="mul.camp.a.dto.SubExerMealDto">
+	SELECT SUBEF_SEQ, SUBEF_TIME, SUBEF_IMAGE, SUBEF_NAME, SUBEF_KCAL
+	FROM (SELECT * 
+			FROM META_SUBSCRIBE_EXERMEALS 
+			WHERE SUBEF_TIME=#{subefTime} AND NOT EXISTS(SELECT * FROM META_SUBSCRIBE_REMEMBERMEALS WHERE SUBREM_ID=#{subefID} AND SUBREM_SEQ = SUBEF_SEQ)
+			ORDER BY DBMS_RANDOM.VALUE)
+	<![CDATA[WHERE ROWNUM <= 1 AND SUBEF_KCAL <= #{subefKcal}]]>
+</select>
+
+
+<!-- #21# 추천한 오늘의 식단 저장  -->
+<insert id="subMealRemember" parameterType="mul.camp.a.dto.SubMealRememberDto">
+	INSERT INTO META_SUBSCRIBE_REMEMBERMEALS(subrem_seq, subrem_name, subrem_id, subrem_date, subrem_mealstime, subrem_type)
+	VALUES(#{subremSeq}, #{subremName}, #{subremId}, SYSDATE, #{subremMealstime}, #{subremType})
+</insert>
+
+<!-- #21# 추천한 오늘의 식단 여부 판단 -->
+<select id="subLogCheckMeal" parameterType="mul.camp.a.dto.SubMealRememberDto" resultType="mul.camp.a.dto.SubMealRememberDto">
+	SELECT *
+	FROM META_SUBSCRIBE_REMEMBERMEALS
+	WHERE TO_CHAR(SUBREM_DATE, 'YYYYMMDD')=TO_CHAR(SYSDATE, 'YYYYMMDD') AND SUBREM_ID=#{subremId} AND SUBREM_MEALSTIME=#{subremMealstime} AND SUBREM_TYPE=#{subremType}
+</select>
+
+<!-- #21# [다이어트] 추천했던 *다이어트* 식단 가져오기 -->
+<select id="subDietMeal" parameterType="Integer" resultType="mul.camp.a.dto.SubDietMealDto">
+	SELECT *
+	FROM META_SUBSCRIBE_DIETMEALS
+	WHERE SUBDF_SEQ=#{subDietSeq}
+</select>
+
+<!-- #21# [운동] 추천했던 *운동* 식단 가져오기 -->
+<select id="subExerMeal" parameterType="Integer" resultType="mul.camp.a.dto.SubExerMealDto">
+	SELECT *
+	FROM META_SUBSCRIBE_EXERMEALS
+	WHERE SUBEF_SEQ=#{subExerSeq}
+</select>
+
+<!-- #21# 추천하였던 식단을 기록하고 있는 REMEMBER TABLE 내 3일 이상인 식단 제거 ex) 29일인 경우 → 26일 이후 식단 삭제 -->
+<delete id="subRememberDel" parameterType="String">
+	DELETE FROM META_SUBSCRIBE_REMEMBERMEALS
+	WHERE SUBREM_ID=#{subDelRemId} AND <![CDATA[TO_CHAR(SYSDATE, 'YYYYMMDD') > TO_CHAR(SUBREM_DATE+2, 'YYYYMMDD')]]>
+</delete>
+
+
+</mapper>

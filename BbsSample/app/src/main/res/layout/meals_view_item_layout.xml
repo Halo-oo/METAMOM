@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_margin="12dp"
+        android:orientation="horizontal"
+        android:background="@drawable/login_input_box"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/foodImg"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_margin="18dp"
+            app:civ_border_overlay="true"
+            app:civ_border_width="3dp"
+            app:civ_border_color="#FFFFFF"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/foodKindTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="분류 : "
+                    android:textSize="14sp"
+                    android:fontFamily="@font/font_content_bold"/>
+
+            <!--<TextView
+                    android:id="@+id/timeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="시간 : "
+                    android:textSize="14sp"
+                    android:textColor="@color/meta_grey03"
+                    android:fontFamily="@font/font_content_regular"/>-->
+
+        </LinearLayout>
+        <TextView
+                android:id="@+id/foodScoreTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="평점 : "
+                android:textSize="14sp"
+                android:fontFamily="@font/font_content_regular"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginEnd="18dp"
+                android:background="@color/meta_grey04"/>
+
+        <TextView
+                android:id="@+id/memoTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="메모 : "
+                android:textSize="12sp"
+                android:textColor="@color/meta_grey01"
+                android:fontFamily="@font/font_content_regular"/>
+    </LinearLayout>
+</LinearLayout>

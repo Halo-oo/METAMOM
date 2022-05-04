@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>레시피 추가</title>
+
+<!-- jquery, 부트스트랩 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./css/initial.css">
+<link rel="stylesheet" type="text/css" href="./css/table.css">
+<link rel="stylesheet" type="text/css" href="./css/button.css">
+
+<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
+
+<link rel="icon" href="images/favicon.png" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="css/header.css" />
+<script defer src="js/main.js"></script> 
+
+
+<style type="text/css">
+ 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@font-face {
+  font-family: 'score';
+  src: url('./fonts/SCDream5.otf') format('truetype');
+}
+@font-face {
+  font-family: 'score-slim';
+  src: url('fonts/SCDream1.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cwDangam';
+  src: url('fonts/CwDangam.otf') format('truetype');
+} 
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}  
+header {
+	font-family: 'score', sans-serif;
+}
+
+.title{
+	font-size: 35px;
+	text-align: center;
+}
+th{
+	justify-content: center;
+	align-items: center;
+}
+.font{
+	justify-content: center;
+	align-items: center;
+}
+.no{
+	border: none;
+}
+.btnp{
+	text-align: center;
+}
+.btn{
+	width: 100px;
+	height: 35px;
+	align-content: center;
+}
+.snip1535 {
+  background-color: #6897bb;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  font-size: 15px;
+  line-height: 1em;
+  margin: 15px 40px;
+  outline: none;
+  /* padding: 12px 40px 10px; */
+  padding: 10px 25px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 5px;
+}
+.snip1535:before,
+.snip1535:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+.snip1535:before {
+  border-color: #a3a1a1;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.snip1535:after {
+  border-bottom-width: 2px;
+  border-color: #a3a1a1;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.snip1535:hover,
+.snip1535.hover {
+  background-color: #a3a1a1;
+}
+.snip1535:hover:before,
+.snip1535.hover:before,
+.snip1535:hover:after,
+.snip1535.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+
+
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="inner">
+      <a href="main.html" class="logo">
+        <img src="images/logo_title4.png" alt="LOGO">
+      </a>
+
+      <div class="sub-menu">
+        <div class="search">
+          <input type="text" />
+          <div class="material-icons">search</div>
+        </div>
+      </div> 
+
+      <ul class="main-menu">
+        <li class="item">
+          <img src="./images/add_account.png" class="menu_img" />
+          &nbsp;&nbsp;<a class="item__name" href="memManagement.html">회원관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/sns.png" class="menu_img" />
+          &nbsp;<a class="item__name" href="">SNS관리</a>
+        </li>
+        <li class="item">
+          <img src="./images/book.png" class="menu_img" />
+          <a class="item__name" href="recipeMain.html">레시피</a>
+        </li>
+      </ul>
+    </div>
+  </header>	
+  <br><br><br><br><br><br><br><br>
+
+
+<br>
+<br>
+<p class="title">레시피 추가</p>
+<br><br>
+
+
+<div align="center">
+
+<form id="add">
+
+<div>
+	<div style="width:750px">
+		<table class="table">
+			<col width="200px"><col width="500px">
+			
+			<thead class="thead-light">
+				<tr>
+					<th>레시피</th>
+					<td>
+						<input type="text" id="recipeName" name="recipeName" size="70px" class="no">
+					</td>
+				</tr>
+			</thead>
+		
+			<thead class="thead-light">
+				<tr>
+					<th>재료</th>
+					<td>
+						<input type="text" id="ingredient" name="ingredient" size="70px" class="no">
+					</td>
+				</tr>
+			</thead>
+			
+			<thead class="thead-light">
+				<tr>
+					<th>간단 설명</th>
+					<td>
+						<input type="text" id="brief" name="brief" size="70px"  class="no">
+					</td>
+				</tr>
+			</thead>
+			
+			<thead class="thead-light">
+				<tr >
+					<th class="font">요리 방법</th>
+					<td>
+						<textarea id="recipe" name="recipe" rows="8" cols="76" class="no"></textarea >
+					</td>
+				</tr>
+			</thead>
+			
+			<thead class="thead-light">
+				<tr>
+					<th>요리 사진</th>
+					<td>
+						<input type="text" id="foodImage" name="foodImage" size="70px" class="no">
+					</td>
+				</tr>
+			</thead>
+			
+			<thead class="thead-light">
+				<tr>
+					<th>요리 방법 사진</th>
+					<td>
+						<input type="text" id="recipeImage" name="recipeImage" size="70px" class="no">
+					</td>
+				</tr>
+			</thead>
+			
+			<thead class="thead-light">
+				<tr>
+					<th>칼로리</th>
+					<td>
+						<input type="text" id="kcal" name="kcal" size="70px" class="no">
+					</td>
+				</tr>
+			</thead>
+			
+			<tr>
+				<td colspan="2" class="btnp">
+					<button type="button" id="btn" class="btn snip1535" >추가</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+</form>
+</div>
+
+<script type="text/javascript">
+
+$("#btn").click(function(){
+	
+	$.ajax({
+		url:"http://localhost:3000/writeRecipe",
+		type:"get",
+		data:$("#add").serialize(),
+		success:function(msg){
+			if(msg == "YES"){
+				alert('추가되었습니다.');
+				location.href = "recipeMain.html";
+			}else{
+				alert('추가되지 않았습니다.');
+			}
+		},
+		error:function(){
+			alert('error');
+		}
+	})
+});
+
+</script>
+
+
+
+
+</body>
+</html>

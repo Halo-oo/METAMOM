@@ -1,0 +1,110 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+}
+
+androidExtensions {
+    experimental = true
+}
+
+android {
+    compileSdk 32
+
+    /* #21# 패키지명 변경 [기존]applicationId "com.example.bbssample" -> [변경]applicationId "com.metamom.bbssample" */
+    /* #21# for 구글 인앱 결제를 위해 APK 빌드 시 버전 수정 [기존]versionCode 1 versionName "1.0" -> [변경]versionCode 3 versionName "3.0" */
+    /* #21# for 부트페이 결제 API 사용을 위하여 version up [기존]minSdk 21 -> [변경]minSdk 23 */
+    defaultConfig {
+        applicationId "com.metamom.bbssample"
+        minSdk 23
+        targetSdk 32
+        versionCode 3
+        versionName "3.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    // retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'  // Retrofit 라이브러리
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // Gson 변환기 라이브러리
+    implementation 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0" // Scalars 변환기 라이브러리
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // recyclerview
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'           // 추가
+    implementation 'com.github.bumptech.glide:glide:4.11.0'             // 추가
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'     // 추가
+
+    // #21# 구독 _오늘의 식단 ImageView url로 붙이기 위하여 추가 (glide 사용)
+    /*implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'*/
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.databinding:databinding-runtime:7.1.2'// 추가
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'     // 추가
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0' // 원형 이미지
+
+    //FragMent
+    implementation 'com.google.android.material:material:1.2.1'         //추가
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:4.9.1")   // 쿠키유지
+
+    // 카카오 로그인
+    implementation "com.kakao.sdk:v2-user:2.9.0"
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.30.0'
+
+    implementation 'com.google.android.gms:play-services-auth:20.1.0'   // 구글 로그인
+
+    // viewpager
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'me.relex:circleindicator:2.1.6'
+
+    /* #21# for 구글 인앱결제 */
+    // - Kotlin Coroutine: 스레드와 기능적으로 같지만, 스레드보다 가볍고 유연하며 한단계 더 진화된 병렬 프로그래밍을 위한 기술 | 하나의 스레드 내 여러개의 코루틴이 실행되는 개념
+    implementation("com.android.billingclient:billing:4.1.0")
+    implementation("com.android.billingclient:billing-ktx:4.1.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")    // (선택사항) Kotlin Coroutine 사용을 위해 추가 - LifeCycler
+
+    /* #21# for 부트페이 결제 */
+    implementation 'com.github.bootpay:client_android_java:+'
+
+
+
+}

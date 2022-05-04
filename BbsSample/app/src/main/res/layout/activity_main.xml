@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="130dp"
+                    android:text="건강하게"
+                    android:textSize="50dp"
+                    android:fontFamily="@font/font_title"
+                    android:textColor="@color/meta_green01"
+                    android:letterSpacing="-0.025"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:paddingTop="0dp"
+                    android:text="먹어보자"
+                    android:textSize="50dp"
+                    android:fontFamily="@font/font_title"
+                    android:textColor="@color/meta_purple01"
+                    android:letterSpacing="-0.025"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+            <EditText
+                    android:id="@+id/editId"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="40dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="17.5dp"
+                    android:paddingBottom="17.5dp"
+                    android:inputType="textEmailAddress"
+                    android:layout_gravity="center"
+                    android:background="@drawable/login_input_box"
+                    android:hint="아이디를 입력해주세요"
+                    android:fontFamily="@font/font_content_regular"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/meta_grey03"/>
+            <EditText
+                    android:id="@+id/editPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="17.5dp"
+                    android:paddingBottom="17.5dp"
+                    android:inputType="textPassword"
+                    android:layout_gravity="center"
+                    android:background="@drawable/login_input_box"
+                    android:hint="비밀번호를 입력해주세요"
+                    android:fontFamily="@font/font_content_regular"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/meta_grey03"/>
+
+       <!--     <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp">
+
+                <RadioButton
+                        android:id="@+id/idCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="아이디 저장"
+                        android:textSize="14sp"
+                        android:buttonTint="@color/meta_purple01"
+                        android:fontFamily="@font/font_content_regular"/>
+
+            </RadioGroup>-->
+            <CheckBox
+                    android:id="@+id/idSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="24dp"
+                    android:text="아이디 저장"
+                    android:textSize="14sp"
+                    android:buttonTint="@color/meta_purple01"
+                    android:fontFamily="@font/font_content_regular"/>
+
+            <Button
+                    android:id="@+id/loginBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:paddingBottom="10dp"
+                    android:text="로그인"
+                    android:fontFamily="@font/font_content_bold"
+                    android:textSize="14sp"
+                    android:background="@drawable/btn_shadow"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:id="@+id/googleBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:drawableStart="@drawable/google_login"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="4dp"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="@drawable/login_border_btn"
+                        android:text="구글 로그인"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/font_content_regular"
+                        android:gravity="center"
+                        android:textColor="@color/meta_grey01"/>
+
+                <TextView
+                        android:id="@+id/kakaoBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="24dp"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="@drawable/login_border_btn"
+                        android:layout_gravity="center"
+                        android:text="카카오 로그인"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/font_content_regular"
+                        android:textColor="@color/meta_grey01"
+                        android:drawableStart="@drawable/kakao_login"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="계정을 잊으셨나요?"
+                        android:textSize="10sp"
+                        android:textColor="@color/meta_grey01"
+                        android:fontFamily="@font/font_content_regular"/>
+
+                <TextView
+                        android:id="@+id/searchId"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:textSize="10sp"
+                        android:textColor="@color/meta_green01"
+                        android:fontFamily="@font/font_content_regular"
+                        android:text="ID 찾기"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="또는"
+                        android:textSize="10sp"
+                        android:textColor="@color/meta_grey01"
+                        android:fontFamily="@font/font_content_regular"/>
+
+                <TextView
+                        android:id="@+id/searchPwd"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="비밀번호 찾기"
+                        android:textSize="10sp"
+                        android:textColor="@color/meta_green01"
+                        android:fontFamily="@font/font_content_regular"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="102dp"
+                    android:layout_marginBottom="35dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="아직 회원이 아닌가요?"
+                        android:textSize="10sp"
+                        android:textColor="@color/meta_grey02"
+                        android:fontFamily="@font/font_content_regular"/>
+
+                <TextView
+                        android:id="@+id/insertMemberBtn"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="회원가입"
+                        android:textSize="10sp"
+                        android:textColor="@color/meta_grey01"
+                        android:fontFamily="@font/font_content_regular"/>
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:src="@drawable/ic_btn_small_move"
+                        android:layout_gravity="center"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
+
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".subscribe.SubAPIPurchaseActivity">
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/subAPI_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:titleTextColor="@color/meta_grey01"
+            app:titleTextAppearance="@style/TitleBarTextAppearance"
+            android:background="@color/meta_white" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:id="@+id/subAPI_textView2"
+            android:text="상품결제" android:gravity="center_vertical" android:textSize="20dp"
+            android:fontFamily="@font/font_content_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp" android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_toolbar"
+            app:layout_constraintHorizontal_bias="0.018"/>
+    <TextView
+            android:id="@+id/subAPI_textView3"
+            android:text="유형"
+            style="@style/SubPurchaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_textView2"
+            app:layout_constraintHorizontal_bias="0.017"/>
+    <TextView
+            android:id="@+id/subAPI_typeTxt"
+            android:text="선택한 상품유형"
+            style="@style/SubPurchaseValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_textView3"
+            app:layout_constraintHorizontal_bias="0.019"/>
+    <TextView
+            android:id="@+id/subAPI_textView10"
+            android:text="기간"
+            style="@style/SubPurchaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_typeTxt"
+            app:layout_constraintHorizontal_bias="0.017"/>
+    <TextView
+            android:id="@+id/subAPI_periodTxt"
+            android:text="선택한 상품기간"
+            style="@style/SubPurchaseValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_textView10" app:layout_constraintHorizontal_bias="0.019"/>
+    <TextView
+            android:text="가격"
+            style="@style/SubPurchaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/subAPI_textView15"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_periodTxt"
+            app:layout_constraintHorizontal_bias="0.017"/>
+    <TextView
+            android:id="@+id/subAPI_costTxt"
+            android:text="선택한 상품가격"
+            style="@style/SubPurchaseValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_textView15"
+            app:layout_constraintHorizontal_bias="0.019"/>
+    <TextView
+            android:text="시간"
+            style="@style/SubPurchaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/subAPI_textView17"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_costTxt"
+            app:layout_constraintHorizontal_bias="0.017"/>
+    <TextView
+            android:text="선택한 시간"
+            style="@style/SubPurchaseValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/subAPI_timeTxt"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_textView17" app:layout_constraintHorizontal_bias="0.018"/>
+    <TextView
+            android:id="@+id/subAPI_plainTxt"
+            android:text="선택한 상품 설명"
+            android:gravity="left" android:textSize="15dp"
+            android:fontFamily="@font/font_content_regular"
+            android:layout_width="540dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subAPI_timeTxt" android:layout_marginTop="48dp"
+            android:layout_marginStart="24dp" android:layout_marginEnd="24dp"/>
+    <Button
+            android:id="@+id/subAPI_purchaseBtn"
+            android:text="결제" android:textSize="15dp"
+            android:fontFamily="@font/font_content_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/subAPI_plainTxt"
+            app:layout_constraintHorizontal_bias="0.941" app:layout_constraintVertical_bias="0.132"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

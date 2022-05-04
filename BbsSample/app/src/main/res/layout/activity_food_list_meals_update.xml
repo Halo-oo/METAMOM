@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".FoodListMeals.FoodListMealsUpdate">
+
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="12dp"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+        <ImageButton
+                android:id="@+id/cameraBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_camera"/>
+        <ImageButton
+                android:id="@+id/albumBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_image"/>
+    </LinearLayout>
+
+    <ImageView
+            android:id="@+id/albumImg3"
+            android:layout_width="match_parent"
+            android:layout_height="342dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/no_image"
+            tools:srcCompat="@drawable/no_image"/>
+
+    <RadioGroup
+            android:id="@+id/radioGroup"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+        <RadioButton
+                android:id="@+id/point1"
+                android:text="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/meta_grey01"
+                android:buttonTint="@color/meta_purple01"/>
+        <RadioButton
+                android:id="@+id/point2"
+                android:text="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/meta_grey01"
+                android:buttonTint="@color/meta_purple01"/>
+        <RadioButton
+                android:id="@+id/point3"
+                android:text="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/meta_grey01"
+                android:buttonTint="@color/meta_purple01"/>
+        <RadioButton
+                android:id="@+id/point4"
+                android:text="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/meta_grey01"
+                android:buttonTint="@color/meta_purple01"/>
+        <RadioButton
+                android:id="@+id/point5"
+                android:text="5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/meta_grey01"
+                android:buttonTint="@color/meta_purple01"/>
+    </RadioGroup>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/meta_grey05"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="식사분류"
+                android:textSize="14dp"
+                android:textColor="@color/meta_grey01"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/font_content_bold"/>
+
+        <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="4dp"
+                android:textAlignment="textEnd"
+                android:autofillHints="아침"
+                tools:ignore="TouchTargetSizeCheck"/>
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <EditText
+                    android:id="@+id/editMemoText3"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:padding="12dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:background="@drawable/food_list_meals_add_background"
+                    android:ems="5"
+                    android:hint="식사평을 등록해주세요"
+                    android:textSize="12sp"
+                    android:textColor="@color/meta_grey01"
+                    android:fontFamily="@font/font_content_regular"/>
+
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp">
+
+                <Button
+                        android:id="@+id/updateListBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginTop="24dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/btn_shadow"
+                        android:textSize="14sp"
+                        android:text="수정"
+                        android:fontFamily="@font/font_content_bold"
+                        android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+            android:id="@+id/selectKind3"
+            android:text="언제 식사 하셧나요 ?"
+            android:textSize="20sp"
+            android:layout_width="316dp"
+            android:layout_height="36dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"/>
+
+    <TextView
+            android:id="@+id/scoreText3"
+            android:text="내가생각한 점수는 ?!"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_width="181dp"
+            android:layout_height="52dp"
+            android:visibility="invisible"/>
+
+</LinearLayout>
